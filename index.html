@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>zenith | Ryuza Official - Script Collection</title>
+  
+  <!-- Preconnect untuk font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Font dengan display=swap untuk loading lebih cepat -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Critical CSS inline untuk First Paint -->
+  <style>
+    /* Critical CSS - Inline untuk fast first paint */
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Orbitron','Rajdhani',sans-serif;background:#000;color:#fff;min-height:100vh;opacity:0;transition:opacity 0.6s ease}
+    body.loaded{opacity:1}
+    .page-loader{position:fixed;inset:0;background:linear-gradient(135deg,#000 0%,#090979 50%,#00d4ff 100%);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.5s ease,visibility 0.5s ease}
+    .page-loader.hide{opacity:0;visibility:hidden}
+    .loader-content{text-align:center}
+    .loader-spinner{width:60px;height:60px;border:4px solid rgba(0,212,255,0.2);border-top-color:#00d4ff;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .loader-text{color:#00d4ff;font-size:1.2rem;letter-spacing:0.2em;animation:pulse 1.5s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:0.6}50%{opacity:1}}
+  </style>
+  
+  <link rel="stylesheet" href="zenith-style.css">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+
+<!-- Page Loader -->
+<div class="page-loader">
+  <div class="loader-content">
+    <div class="loader-spinner"></div>
+    <div class="loader-text">LOADING...</div>
+  </div>
+</div>
+
+<!-- Animated Particles -->
+<div class="particles" aria-hidden="true">
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+</div>
+
+<!-- Header -->
+<header class="glass-header">
+  <div class="container">
+    <div class="header-title">
+      <span class="title-main">zenith</span>
+      <span class="title-sub">Ryuza Official</span>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="container">
+  <section class="section-top">
+    <div>
+      <h1 class="section-title">Daftar Script</h1>
+      <p class="section-subtitle">Klik tombol dikiri untuk liat scriptnya yaa</p>
+    </div>
+    <input id="search" type="search" placeholder="Cari hero..." class="glass-search" autocomplete="off">
+  </section>
+
+  <!-- Role Filter -->
+  <div class="role-filter-container">
+    <div class="role-scroll">
+      <button class="role-btn active" data-role="all">All Heroes</button>
+      <button class="role-btn" data-role="Assassin">Assassin</button>
+      <button class="role-btn" data-role="Fighter">Fighter</button>
+      <button class="role-btn" data-role="Mage">Mage</button>
+      <button class="role-btn" data-role="Tank">Tank</button>
+      <button class="role-btn" data-role="Marksman">Marksman</button>
+      <button class="role-btn" data-role="Support">Support</button>
+    </div>
+  </div>
+
+  <!-- Hero List -->
+  <div class="hero-list-background">
+    <div id="loading" class="loading-skeleton">
+      <div class="skeleton-item"></div>
+      <div class="skeleton-item"></div>
+      <div class="skeleton-item"></div>
+    </div>
+
+    <div class="list-container">
+      <div id="listWrap" class="masonry-grid"></div>
+    </div>
+
+    <div id="emptyState" class="empty-state">
+      <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      </svg>
+      <p>Tidak ada data ditemukan</p>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div>© 2025 zenith | Ryuza Official</div>
+  <div>Semua Script ini dari Ryuza Official ya, jadi kemungkinan besarnya ini aman!!</div>
+</footer>
+
+<!-- Template -->
+<template id="itemTpl">
+  <div class="hero-card">
+    <div class="hero-img-wrapper">
+      <div class="hero-img"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-header">
+        <div class="hero-text">
+          <div class="hero-name">Hero</div>
+          <div class="hero-desc">Desc</div>
+        </div>
+        <button class="chevron-btn" aria-label="Toggle details">
+          <span class="chevron-icon">⟨</span>
+        </button>
+      </div>
+      <div class="expanded-area">
+        <div class="variants-grid"></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- Deferred JavaScript Loading -->
+<script src="zenith-script.js" defer></script>
+</body>
+</html>
